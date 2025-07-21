@@ -30,6 +30,22 @@ class Map<K, V> {
         return this.indexOfKey(key) >= 0;
     }
 
+    hasValue(value: V): boolean {
+        for (let v of this.values) {
+            if (v == value) return true;
+        }
+        return false;
+    }
+
+    entries(): [K, V][] {
+        let result: [K, V][] = [];
+        for (let i = 0; i < this.keys.length; i++) {
+            result.push([this.keys[i], this.values[i]]);
+        }
+        return result;
+    }
+
+
     // Deletes a key-value pair
     delete(key: K): boolean {
         let index = this.indexOfKey(key);
@@ -62,6 +78,23 @@ class Map<K, V> {
         return this.values.slice();
     }
 
+    clone(): Map<K, V> {
+        let copy = new Map<K, V>();
+        for (let i = 0; i < this.keys.length; i++) {
+            copy.set(this.keys[i], this.values[i]);
+        }
+        return copy;
+    }
+
+    merge(other: Map<K, V>): Map<K, V> {
+        let result = this.clone();
+        for (let kv of other.entries()) {
+            result.set(kv[0], kv[1]);
+        }
+        return result;
+    }
+
+
     // Iterates over each key-value pair
     forEach(callback: (key: K, value: V) => void): void {
         for (let i = 0; i < this.keys.length; i++) {
@@ -71,9 +104,6 @@ class Map<K, V> {
 
     // Internal: gets index of key
     private indexOfKey(key: K): number {
-        for (let i = 0; i < this.keys.length; i++) {
-            if (this.keys[i] == key) return i;
-        }
-        return -1;
+        return this.keys.indexOf(key);
     }
 }

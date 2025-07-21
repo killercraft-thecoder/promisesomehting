@@ -46,4 +46,42 @@ class Set<T> {
     values(): T[] {
         return this.items.slice();
     }
+    
+    entries(): [T, T][] {
+        let pairs: [T, T][] = [];
+        for (let item of this.items) {
+            pairs.push([item, item]);
+        }
+        return pairs;
+    }
+
+    forEach(callback: (value: T) => void): void {
+        for (let item of this.items) {
+            callback(item);
+        }
+    }
+
+    union(other: Set<T>): Set<T> {
+        let result = new Set<T>();
+        for (let item of this.items) result.add(item);
+        for (let item of other.values()) result.add(item);
+        return result;
+    }
+
+    intersection(other: Set<T>): Set<T> {
+        let result = new Set<T>();
+        for (let item of this.items) {
+            if (other.has(item)) result.add(item);
+        }
+        return result;
+    }
+
+    difference(other: Set<T>): Set<T> {
+        let result = new Set<T>();
+        for (let item of this.items) {
+            if (!other.has(item)) result.add(item);
+        }
+        return result;
+    }
+
 }

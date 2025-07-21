@@ -15,7 +15,8 @@
         "set.ts",
         "map.ts",
         "obesrable.ts",
-        "abortcontroller.ts"
+        "abortcontroller.ts",
+        "QOL.ts"
     ],
     "testFiles": [
         "test.ts"
