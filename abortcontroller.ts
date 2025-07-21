@@ -1,7 +1,7 @@
 // 🛑 Custom AbortController for cooperative cancellation
 
 class AbortController {
-    public readonly signal: AbortSignal;
+    public signal: AbortSignal;
 
     constructor() {
         this.signal = new AbortSignal();
@@ -9,7 +9,11 @@ class AbortController {
 
     // Cancels the signal
     abort(): void {
-        this.signal.trigger();
+        if (this.signal.isAborted == false) this.signal.trigger();
+    }
+
+    cleanup(): void {
+        this.signal = null;
     }
 }
 

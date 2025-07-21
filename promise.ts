@@ -19,13 +19,10 @@ class PromiseCatchable<T> {
             this.error = e;
         }
         this.finished = true;
-
-        for (let cb of this.afterCallbacks) {
-            cb(this.resolvedValue);
-        }
     }
 
     __run__(callback: () => T): void {
+        this.finished = false
         try {
             this.value = callback();
         } catch (e) {
@@ -42,7 +39,12 @@ class PromiseCatchable<T> {
 
 
     catch(callback: (err: any) => void): PromiseCatchable<T> {
-        if (this.error) callback(this.error);
+        this.catchCallbacks.push(callback);
+
+        if (this.error) {
+            callback(this.error);
+        }
+
         return this;
     }
 
@@ -53,6 +55,14 @@ class PromiseCatchable<T> {
             this.afterCallbacks.push(callback);
         }
         return this;
+    }
+
+    then(callback: (val: T) => void): PromiseCatchable<T> {
+        return this.after(callback);
+    }
+    /** Return If running the current callback is done */
+    get done():boolean {
+        return this.finished
     }
 }
 

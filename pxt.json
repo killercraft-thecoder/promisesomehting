@@ -16,7 +16,9 @@
         "map.ts",
         "obesrable.ts",
         "abortcontroller.ts",
-        "QOL.ts"
+        "QOL.ts",
+        "eventbus.ts",
+        "vectors.ts"
     ],
     "testFiles": [
         "test.ts"
