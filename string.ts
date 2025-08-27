@@ -16,7 +16,9 @@ interface String {
     toTitleCase():string;
     //%helper=STR_count
     count(substring: string, ignoreCase?: boolean):number;
-
+    //%helper=STR_codes
+    /** Return the Charecter Codes in ASKII of the string */
+    codes():number[];
 }
 
 // Provide the actual logic behind the methods
@@ -38,6 +40,14 @@ namespace helpers {
         }
 
         return padding.substr(0, targetLength - str.length) + str;
+    }
+
+    export function STR_codes(str:string):number[] {
+        let codes:number[] = []
+        for (let i = 0; i < str.length; i++) {
+            codes.push(str.charCodeAt(i))
+        }
+        return codes
     }
 
     export function STR_PADEND(str: string, targetLength: number, padChar?: string): string {
