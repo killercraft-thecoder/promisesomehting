@@ -19,10 +19,16 @@ interface String {
     //%helper=STR_codes
     /** Return the Charecter Codes in ASKII of the string */
     codes():number[];
+
+    //%helper=STR_SUBSTR
+    substring(start: number, length?: number):string;
 }
 
 // Provide the actual logic behind the methods
 namespace helpers {
+    export function STR_SUBSTR(str:string,start:number,length?:number) {
+        return str.substr(start,length)
+    }
     export function STR_STARTSWITH(str: string, search: string): boolean {
         return str.substr(0, search.length) == search;
     }
