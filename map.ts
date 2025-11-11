@@ -2,7 +2,13 @@ class Map<K, V> {
     private keys: K[] = [];
     private values: V[] = [];
     
-    constructor() {}
+    constructor(iteratable?:any[]) {
+        if (iteratable) {
+            const converted = this.extractKeysAndValues(iteratable);
+            this.keys = converted.keys;
+            this.values = converted.values;
+        }
+    }
 
     // Sets a key-value pair
     set(key: K, value: V): Map<K, V> {
@@ -106,4 +112,18 @@ class Map<K, V> {
     private indexOfKey(key: K): number {
         return this.keys.indexOf(key);
     }
+
+    private extractKeysAndValues(mapEntries:any[]) {
+        let keys = [];
+        let values = [];
+
+        for (let i = 0; i < mapEntries.length; i++) {
+            let entry = mapEntries[i];
+            keys.push(entry[0]);   // First element is the key
+            values.push(entry[1]); // Second element is the value
+        }
+
+        return { keys: keys, values: values };
+    }
+
 }

@@ -1,9 +1,11 @@
-// 🔢 Simple Set class for unique values
+// Simple Set class for unique values
 
 class Set<T> {
     private items: T[] = [];
     
-    constructor() {}
+    constructor(values?:T[]) {
+        if (values) this.items = values;
+    }
 
     // Adds value if it's not already present
     add(value: T): Set<T> {

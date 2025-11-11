@@ -1,4 +1,4 @@
-// 🛑 Custom AbortController for cooperative cancellation
+// Custom AbortController for cooperative cancellation
 
 class AbortController {
     public signal: AbortSignal;

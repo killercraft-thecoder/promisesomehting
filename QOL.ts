@@ -93,3 +93,8 @@ class Timer {
         return dur
     }
 }
+function assert(expression:() => boolean,value:boolean = true) {
+    if (expression() != value) {
+        throw "Failed Assert"
+    }
+}

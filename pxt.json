@@ -18,13 +18,16 @@
         "abortcontroller.ts",
         "QOL.ts",
         "eventbus.ts",
-        "vectors.ts"
+        "vectors.ts",
+        "object.ts",
+        "number.ts",
+        "betterjson.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "2.0.56",
+        "target": "2.0.61",
         "targetId": "arcade"
     },
     "supportedTargets": [

@@ -1,4 +1,4 @@
-// 📡 Observable class for reactive programming
+// Observable class for reactive programming
 
 class Observable<T> {
     private listeners: ((value: T) => void)[] = [];
