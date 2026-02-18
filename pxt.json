@@ -21,13 +21,14 @@
         "vectors.ts",
         "object.ts",
         "number.ts",
-        "betterjson.ts"
+        "betterjson.ts",
+        "threading.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "2.0.61",
+        "target": "4.0.5",
         "targetId": "arcade"
     },
     "supportedTargets": [
